@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import {Angular2SmartTableModule} from 'angular2-smart-table';
 
 import {SharedModule} from '../../shared/shared.module';
@@ -61,19 +61,13 @@ const EXAMPLES_COMPONENTS = [
   RowExpandComponent
 ];
 
-@NgModule({
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forChild(routes),
-    Angular2SmartTableModule,
-    SharedModule,
-  ],
-  declarations: [
-    ExamplesComponent,
-    ...EXAMPLES_COMPONENTS,
-  ],
-})
+@NgModule({ declarations: [
+        ExamplesComponent,
+        ...EXAMPLES_COMPONENTS,
+    ], imports: [CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule.forChild(routes),
+        Angular2SmartTableModule,
+        SharedModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class ExamplesModule { }

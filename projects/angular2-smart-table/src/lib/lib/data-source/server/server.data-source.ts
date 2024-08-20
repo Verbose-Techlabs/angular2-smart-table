@@ -1,4 +1,4 @@
-import {HttpClient, HttpParams} from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import {lastValueFrom, Observable} from 'rxjs';
 
 import {LocalDataSource} from '../local/local.data-source';
